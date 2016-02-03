@@ -12,7 +12,7 @@ function screen_output (type, value, item){
             $('.screen').html("");
             break;
         default:
-            $('#screen').html(value).css('font-size', '2em');
+            $('#screen').html(value).css({'font-size': '3.5em', 'overflow': 'hidden'});
             break;
     }
 

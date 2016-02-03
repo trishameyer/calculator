@@ -32,12 +32,15 @@ body{
     border-radius: 20px;
     width: 96%;
     height: 95%
+
     /* display: inline-block; */
+
 }
 
 .row{
     height: 16.7%;
     background-color: dimgray;
+
 }
 
 .row div{
