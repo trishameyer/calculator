@@ -48,9 +48,9 @@ body{
     display: inline-block;
     margin-top: 2%;
     border-radius: 1em;
-    -webkit-box-shadow: inset 0px -1px 3px 1px;
-    -moz-box-shadow: inset 0px -1px 3px 1px;
-    box-shadow: inset 0px -1px 3px 1px;
+    -webkit-box-shadow: inset 2px -2px 4px 1px;
+    -moz-box-shadow: inset 2px -2px 4px 1px;
+    box-shadow: inset 2px -2px 4px 1px;
     background-color: #20163B;
     text-align: center;
     font-weight: bold;
@@ -75,7 +75,7 @@ body{
 }
 
 h2{
-    font-size: 3.5vh;
+    font-size: 4.5vh;
     color: #D6CEA7;
 }
 
