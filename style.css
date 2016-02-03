@@ -1,0 +1,101 @@
+body{
+    background-color: lightgray;
+    color: black;
+    font-family: monospace;
+}
+
+.container{
+    border: 2px solid black;
+    box-sizing: border-box;
+    /*height: 460px;*/
+    /*width: 310px;*/
+    height: 60vh;
+    width: 23vw;
+    border-radius: 10px;
+    transform: translate(0, 20%);
+    -webkit-box-shadow: 10px 11px 3px -2px;
+    -moz-box-shadow: 10px 11px 3px -2px;
+    box-shadow: 10px 11px 3px -2px;
+    overflow: hidden;
+}
+
+
+/*THE 'SCREEN' THAT SHOWS VALUES*/
+#screen{
+    background-color: #FFF1CF;
+    box-shadow: inset 0 7px 5px 0;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 96%;
+    height: 95%
+    /* display: inline-block; */
+}
+
+.row{
+    height: 20%;
+    background-color: dimgray;
+}
+
+.row div{
+    /*width: 66px;*/
+    /*height: 80px;*/
+    width: 22%;
+    height: 85%;
+    display: inline-block;
+    margin-top: 2%;
+    border-radius: 1em;
+    -webkit-box-shadow: inset 0px -1px 3px 1px;
+    -moz-box-shadow: inset 0px -1px 3px 1px;
+    box-shadow: inset 0px -1px 3px 1px;
+    background-color: #3B8EA9;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+.row > div:first-of-type{
+    margin-left: 2%;
+}
+
+#longer{
+    /*width: 140px;*/
+    width: 46.5%;
+    height: 85%;
+    border-radius: 1em;
+}
+
+/*THE LAST COLUMN OF 'BUTTONS'*/
+.row .last_col{
+    background-color: #FF9A52;
+}
+
+h3{
+    position: relative;
+}
+
+h2{
+    font-size: 3.5vh;
+}
+
+
+/* MOBILE SIZE CSS */
+@media screen and (max-width: 1000px){
+    .container {
+        height: 100vh;
+        width: 100vw;
+        transform: translate(0,0);
+    }
+    #longer{
+        height: 90%;
+        width: 47%;
+    }
+    .row div{
+        width: 23%;
+        height: 90%;
+    }
+    h2{
+        font-size: 8vh;
+        transform: translate(0, 40%);
+    }
+}
