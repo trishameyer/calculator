@@ -7,8 +7,15 @@
 //ITEM - Only use for advanced functionality Object of different types
 
 function screen_output (type, value, item){
-   //$('#screen').text(value);
-    $('#screen').text(value);
+    switch (value){
+        case undefined:
+            $('.screen').html("");
+            break;
+        default:
+            $('#screen').html(value).css('font-size', '2em');
+            break;
+    }
+
 }
 
 
@@ -18,7 +25,6 @@ var my_calculator = new calculator(screen_output);
 
 $(document).ready(function(){
    $('.row div').click(function(){
-       console.log("button clicked");
        button_clicked(this);
 
    });
@@ -27,6 +33,12 @@ $(document).ready(function(){
 
 function button_clicked (button){
     var val = $(button).find('h2').text();
-    console.log(val);
-    my_calculator.addItem(val);
+    switch (val){
+        case 'CE':
+            my_calculator.allClear();
+            break;
+        default:
+            my_calculator.addItem(val);
+            break;
+    }
 }
