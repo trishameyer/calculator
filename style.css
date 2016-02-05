@@ -31,8 +31,10 @@ body{
     border: 1px solid black;
     border-radius: 20px;
     width: 96%;
-    height: 95%
-
+    height: 98%;
+    margin-top: 1%;
+    text-align: center;
+    font-size: 3em;
     /* display: inline-block; */
 
 }
@@ -43,21 +45,17 @@ body{
 
 }
 
-.row div{
+.row button {
+    display: inline-block;
     width: 66px;
     height: 80px;
-    /*width: 22%;*/
-    /*height: 85%;*/
-    display: inline-block;
     margin-top: 2%;
-    border-radius: 1em;
-    -webkit-box-shadow: inset -2px -2px 4px 1px;
-    -moz-box-shadow: inset -2px -2px 4px 1px;
-    box-shadow: inset -2px -2px 4px 1px;
-    background-color: #20163B;
-    text-align: center;
     font-weight: bold;
+    font-size: 20px;
+    float: left;
+    margin-right: 2.5%;
 }
+
 
 
 
@@ -65,22 +63,19 @@ body{
     margin-left: 2%;
 }
 
-div .longer{
-    width: 140px;
-    /*width: 46.5%;*/
-    /*height: 85%;*/
-    border-radius: 1em;
+#CE{
+    width: 46.5%;
 }
 
-/*THE LAST COLUMN OF 'BUTTONS'*/
-.row .last_col{
+#equalSign{
+    width: 46%;
+}
+
+THE LAST COLUMN OF 'BUTTONS'
+.row button .last_col{
     background-color: #663330;
 }
 
-h2{
-    font-size: 6vh;
-    color: #D6CEA7;
-}
 
 
 /* MOBILE SIZE CSS */
