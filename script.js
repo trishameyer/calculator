@@ -12,11 +12,15 @@ $(document).ready(function(){
     });
 
     $('#equalSign').click(function(){
-        do_math(input_storage);
+        getMathVariables(input_storage);
     });
 
+    //$('#decimal').click(function(){
+    //   store_number($(this).text());
+    //});
+
     $('#CE').click(function(){
-        resetCalculator($(this).text());
+        resetCalculator($(this));
     });
 });
 
@@ -25,13 +29,10 @@ $(document).ready(function(){
 //@params: button_value - the value of the button that is clicked'
 //@return: none;
 //@global variables:
-//input-storage
-//current_index
-
+    //input-storage - stores all inputs
+    //current_index - the current index you are on
 function store_number(button_value){
-    console.log("store number button value: ",button_value);
     input_storage[current_index]+= button_value;
-    console.log("input storage: ",input_storage);
     display_output();
 }
 
@@ -40,15 +41,13 @@ function store_number(button_value){
 //@params: button_value - the value of the button that is clicked
 //@return: none
 //@global:
-//input_storage
-//current_index
+    //input-storage - stores all inputs
+    //current_index - the current index you are on
 function store_operator(button_value){
-    console.log("store operator button value: ",button_value);
     current_index++;
     input_storage[current_index] = button_value;
     current_index++;
     input_storage[current_index] = '';
-    console.log('input storage: ', input_storage);
     display_output();
 }
 
@@ -73,47 +72,36 @@ function display_output(){
 //input_storage - storage for all numbers and operators
 //current_index - the current position in the input_storage
 function perform_calc(op1, op2, operator){
-    console.log('perform_calc called');
-    console.log(op1);
-    console.log(op2);
-    console.log(operator);
     var result;
     var num1;
     var num2;
     //hard coded right now
     switch (operator){
         case '+':
-            console.log('case addition entered');
             num1 = Number(op1);
             num2 = Number(op2);
             result = num1 + num2;
-            console.log("result inside case: ", result);
             break;
         case '-':
-            console.log('case subtraction entered');
             num1 = Number(op1);
             num2 = Number(op2);
             result = num1 - num2;
-            console.log("result inside case: ", result);
             break;
         case 'x':
-            console.log('case multiplication entered');
             num1 = Number(op1);
             num2 = Number(op2);
             result = num1 * num2;
-            console.log("result inside case: ", result);
             break;
         case '/':
-            console.log('case division entered');
             num1 = Number(op1);
             num2 = Number(op2);
             result = num1 / num2;
-            console.log("result inside case: ", result);
             break;
         default:
             result = "error";
     }
-    console.log('exited case statement');
+    input_storage = [''];
+    input_storage += result;
     $('#screen').text(result);
 
 }
@@ -123,25 +111,31 @@ function perform_calc(op1, op2, operator){
 //@return: none
 //global:
 //input_storage - storage of all numbers and operators
-function do_math(array){
+function getMathVariables(array){
+    console.log("do math function called");
     var number1;
     var number2;
     var operatorSign;
-    for(var i=0; i<array.length; i++){
-        if (i === 0){
-            number1 = array[i];
-            console.log("number 1: ",number1);
-        } else if (i === 1){
-            operatorSign = array[i];
-            console.log('operator sign: ',operatorSign);
-        } else if (i === 2){
-            number2 = array[i];
-            console.log('number 2: ',number2);
+    input_storage.forEach(function(ele){
+        if(isNaN(ele)){
+            operatorSign = ele;
+        } else if (!isNaN(ele) && number1 === undefined){
+            number1 = parseFloat(ele);
+        } else if (!isNaN(ele) && number2 === undefined){
+            number2 = parseFloat(ele);
         }
-    }
+    });
+
     perform_calc(number1, number2, operatorSign);
 }
 
+
+//@purpose: to reset the global variables and clear the output screen display
+//@params: button_value- the value of the button pressed
+//@return: none
+//@global:
+    //input_storage - the storage for all button inputs, numbers and operators
+    //current_index - the index you are currently on
 function resetCalculator(button_value){
     input_storage = [''];
     current_index = 0;
