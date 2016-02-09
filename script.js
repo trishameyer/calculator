@@ -78,13 +78,21 @@ function store_operator(button_value){
 
 //@purpose: add a decimal point to the number but not to an operator. if the current index is a number, add the decimal point to the index after the number
 function decimalPoint(button_value){
-    if(!isNaN(input_storage[current_index])){
+    if (input_storage[current_index] === ''){
+        console.log('entered decimal point if current index is an empty string');
+        input_storage[current_index] = ('0' + button_value);
+        console.log(input_storage);
+    } else if(!isNaN(input_storage[current_index])){
         console.log('entered decimal point if current index is a number');
         input_storage[current_index] += button_value;
+        console.log(input_storage);
     } else {
-        console.log('entered decimal point if current index is not a number');
+        console.log('entered decimal point if current index is NOT a number');
+        current_index++;
+        input_storage[current_index] = ('0' + button_value);
+        console.log(input_storage);
     }
-    display_output(); //so right now the decimal only works if it isn't pressed after an operator
+    display_output();
 }
 
 //function equals (button_value){
