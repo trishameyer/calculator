@@ -87,6 +87,12 @@ function decimalPoint(button_value){
     display_output(); //so right now the decimal only works if it isn't pressed after an operator
 }
 
+//function equals (button_value){
+//    if (input_storage[current_index] === '='){
+//
+//    }
+//}
+
 
 //@purpose: to display the output that has been put into the input_storage variable
 //params: none;
@@ -120,11 +126,11 @@ function perform_calc(op1, op2, operator){
             result = op1 * op2;
             break;
         case '/':
-            if (op1 / 0){ ///all division is giving me the error
-                result = "error";
-            } else {
+            //if (op1 / 0){ ///all division is giving me the error
+            //    result = "error";
+            //} else {
                 result = op1 / op2;
-            }
+            //}
             break;
         default:
             result = "error";
@@ -182,7 +188,7 @@ function clearAll(button_value){
 //@global:
     //input_storage - the storage for all button inputs, numbers, and operators
 
-function clearButton (button_value){
+function clearButton (button_value){ //need to change how this works because it adds an empty string instead of just deleting the last index value
     input_storage[input_storage.length-1] = '';
     display_output();
 }
