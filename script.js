@@ -39,21 +39,35 @@ $(document).ready(function(){
     //input-storage - stores all inputs
     //current_index - the current index you are on
 function store_number(button_value){
-    //if (isNaN([current_index])) {
-    //    console.log('entered the if statement of current index being +');
-    //    current_index++;
-    //    input_storage[current_index] += button_value;
-    //    display_output();
-    //    console.log(input_storage);
-    //} else if (!isNaN([current_index])) {
-    //    console.log('entered the else if ');
-    //    input_storage[current_index]+= button_value;
-    //    display_output();
-    //    console.log(input_storage);
-    //}
-    console.log(input_storage);
-    input_storage[current_index]+= button_value;
-    display_output();
+  if(!isNaN(input_storage[current_index])){
+      console.log('pressed number: current index is a number');
+      input_storage[current_index]+= button_value;
+      console.log(input_storage);
+      display_output();
+  } else if (isNaN(input_storage[current_index])){
+      current_index++;
+      console.log('pressed number: current index is not a number');
+      if(input_storage[current_index] == undefined) {
+          console.log('if index is undefined');
+
+          //console.log("just incremented index to: ", current_index);
+          input_storage[current_index]= button_value;
+          console.log(input_storage);
+          display_output();
+      } else {
+          console.log('else index is defined');
+          //current_index++;
+          //console.log("just incremented index to: ", current_index);
+          input_storage[current_index] += button_value;
+          console.log(input_storage);
+          display_output();
+      }
+
+
+  }
+    //console.log(input_storage);
+    //input_storage[current_index]+= button_value;
+    //display_output();
 }
 
 
@@ -64,26 +78,21 @@ function store_number(button_value){
     //input-storage - stores all inputs
     //current_index - the current index you are on
 function store_operator(button_value){
-    current_index++;
-    input_storage[current_index] = button_value;
-    console.log(input_storage);
-    current_index++;
-    input_storage[current_index] = '';
-    console.log(input_storage);
+    if(!isNaN(input_storage[current_index])){
+        console.log('pressed operator: current index is a number');
+        current_index++;
+        console.log("just incremented index to: ", current_index);
+        input_storage[current_index] = button_value;
+        console.log(input_storage);
+        display_output();
+    } else if (isNaN(input_storage[current_index])){
+        console.log('pressed operator: current index is not a number');
+        input_storage[current_index] = button_value;
+        console.log(input_storage);
+        display_output();
+    }
+
     display_output();
-
-    //if(isNaN([current_index])){
-    //    console.log('you entered the if of storing operators');
-    //    input_storage[current_index] = button_value;
-    //    console.log(input_storage);
-    //} else {
-    //    console.log('you entered the else of storing operators');
-    //    current_index++;
-    //    input_storage[current_index] = button_value;
-    //    console.log(input_storage);
-    //}
-
-    //display_output();
 }
 
 
@@ -124,8 +133,9 @@ function perform_calc(op1, op2, operator){
         default:
             result = "error";
     }
-    input_storage = [''];
-    input_storage += result;
+    input_storage.splice(0,2);
+    input_storage[0] = result;
+    console.log("input_storage after splice: ",input_storage);
     $('#screen').text(result);
 
 }
