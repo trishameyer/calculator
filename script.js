@@ -27,7 +27,7 @@ $(document).ready(function(){
         clearButton($(this));
     });
 
-    $('#CE').click(function(){
+    $('#AC').click(function(){
         clearAll($(this));
     });
 });
@@ -77,6 +77,11 @@ function store_operator(button_value){
 }
 
 //@purpose: add a decimal point to the number but not to an operator. if the current index is a number, add the decimal point to the index after the number
+//@params: button_value
+//@return: calls display_output function to show value on screen display
+//@global:
+    //input_storage
+    //current_index
 function decimalPoint(button_value){
     if (input_storage[current_index] === ''){
         console.log('entered decimal point if current index is an empty string');
@@ -134,7 +139,7 @@ function perform_calc(op1, op2, operator){
             result = op1 * op2;
             break;
         case '/':
-            //if (op1 / 0){ ///all division is giving me the error
+            //if (op1 / "0"){ ///all division is giving me the error
             //    result = "error";
             //} else {
                 result = op1 / op2;
@@ -173,6 +178,7 @@ function getMathVariables(array){
         }
     display_output();
     }
+
     current_index = 0;
 }
 
@@ -186,7 +192,7 @@ function getMathVariables(array){
 function clearAll(button_value){
     input_storage = [''];
     current_index = 0;
-    display_output().empty();
+    display_output().text('');
 }
 
 
@@ -196,7 +202,9 @@ function clearAll(button_value){
 //@global:
     //input_storage - the storage for all button inputs, numbers, and operators
 
-function clearButton (button_value){ //need to change how this works because it adds an empty string instead of just deleting the last index value
+function clearButton (button_value){ //does not fully function yet
+    //input_storage.pop();
     input_storage[input_storage.length-1] = '';
+    console.log(input_storage);
     display_output();
 }
